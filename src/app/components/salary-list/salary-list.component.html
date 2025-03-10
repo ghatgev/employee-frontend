@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h2>Salary Details</h2>
+  
+    <div class="mb-3">
+      <label>Employee ID:</label>
+      <input type="number" class="form-control" [(ngModel)]="employeeId">
+      <button class="btn btn-primary mt-2" (click)="loadSalaries()">Search</button>
+    </div>
+  
+    <table class="table table-bordered mt-3" *ngIf="salaries.length > 0">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Amount</th>
+          <th>Pay Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let salary of salaries">
+          <td>{{ salary.employeeId }}</td>
+          <td>{{ salary.amount }}</td>
+          <td>{{ salary.payDate | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="salaries.length === 0 && employeeId">No salary records found.</p>
+  </div>
